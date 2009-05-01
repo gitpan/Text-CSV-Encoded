@@ -9,7 +9,7 @@ use base qw( Text::CSV::Encoded::Coder::Base );
 use Carp ();
 use Encode ();
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 my %EncoderCache;
 
@@ -21,12 +21,14 @@ sub upgrade {
 
 sub encode {
     my ( $self, $encoding, $str ) = @_;
+    return unless defined $str;
     $self->find_encoding( $encoding )->encode( $str );
 }
 
 
 sub decode {
     my ( $self, $encoding, $str ) = @_;
+    return unless defined $str;
     $self->find_encoding( $encoding )->decode( $str );
 }
 
@@ -35,7 +37,7 @@ sub decode_fields_ref {
     my ( $self, $encoding, $arrayref ) = @_;
     my $enc = $self->find_encoding( $encoding ) || return;
     for ( @$arrayref ) {
-        $_ = $enc->decode( $_ );
+        $_ = $enc->decode( $_ ) if defined $_;
     }
 }
 
@@ -44,7 +46,7 @@ sub encode_fields_ref {
     my ( $self, $encoding, $arrayref ) = @_;
     my $enc = $self->find_encoding( $encoding ) || return;
     for ( @$arrayref ) {
-        $_ = $enc->encode( $_ );
+        $_ = $enc->encode( $_ ) if defined $_;
     }
 }
 
@@ -85,7 +87,7 @@ Makamaka Hannyaharamitu, E<lt>makamaka[at]cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 by Makamaka Hannyaharamitu
+Copyright 2008-2009 by Makamaka Hannyaharamitu
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 

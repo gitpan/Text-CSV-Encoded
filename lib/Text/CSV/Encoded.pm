@@ -4,7 +4,7 @@ use strict;
 use vars  qw( $VERSION );
 use Carp ();
 
-$VERSION = '0.07';
+$VERSION = '0.08';
 
 BEGIN {
     require Text::CSV;
@@ -621,7 +621,7 @@ He and Juerd advised me many points about documents and sources.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2008 by Makamaka Hannyaharamitu
+Copyright 2008-2009 by Makamaka Hannyaharamitu
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

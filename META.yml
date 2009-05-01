@@ -1,8 +1,8 @@
 --- #YAML:1.0
 name:                Text-CSV-Encoded
-version:             0.07
+version:             0.08
 abstract:            Encoding aware Text::CSV.
-license:             ~
+license:             perl
 author:              
     - Makamaka Hannyaharamitu, E<lt>makamaka[at]cpan.orgE<gt>
 generated_by:        ExtUtils::MakeMaker version 6.42

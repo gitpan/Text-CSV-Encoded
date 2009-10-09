@@ -4,7 +4,7 @@ use strict;
 use vars  qw( $VERSION );
 use Carp ();
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 BEGIN {
     require Text::CSV;
@@ -54,7 +54,7 @@ sub new {
         $opt{ $attr }  = delete $opt->{ $attr } if ( exists $opt->{ $attr } );
     }
 
-    my $self = $class->SUPER::new( $opt );
+    my $self = $class->SUPER::new( $opt ) || return;
 
     if ( my $coder_class = ( $opt{coder_class} || $DefaultCoderClass ) ) {
         $self->coder_class( $coder_class );
@@ -304,10 +304,16 @@ be based on L<Encode> supported names. See to L<Encode::Supported> and L<Encode:
 
 =head2 new
 
-    $csv = Text::CSV::Encoded->new()
+    $csv = Text::CSV::Encoded->new();
+
+    Text::CSV::Encoded->error_diag unless $csv; # report error message
 
 Creates a new Text::CSV::Encoded object. It can take all options of L<Text::CSV>.
 Of course, C<binary> option is always on.
+
+If Text::CSV::Encoded fails in constructing, you can get an error message using C<error_diag>.
+See to L<Text::CSV/error_diag>.
+
 The following options are supported by this method:
 
 =over

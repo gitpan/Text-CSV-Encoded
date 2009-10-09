@@ -1,5 +1,16 @@
 Revision history for Perl extension Text::CSV::Encoded.
 
+0.09  Fri Oct  9 16:56:43 2009
+	- requires Text::CSV 1.12 or later.
+
+	[Text::CSV::Encoded]
+	- A construction fail returns undef (rt#46077)
+	- improved new() section in the document
+
+	[Text::CSV::Encoded::Coder::Encod]
+	[Text::CSV::Encoded::Coder::EncodeGuess]
+	- attr 'blank_is_undef' was not effective (reported by Zsombor Welker)
+
 0.08  Thu Apr 23 15:23:42 2009
 	[Text::CSV::Encoded::Coder::EncodeGuess]
 	- undef check before encode/decode (rt#45078)

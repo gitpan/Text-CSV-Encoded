@@ -9,7 +9,7 @@ use base qw( Text::CSV::Encoded::Coder::Base );
 use Carp ();
 use Encode ();
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 my %EncoderCache;
 
@@ -21,14 +21,14 @@ sub upgrade {
 
 sub encode {
     my ( $self, $encoding, $str ) = @_;
-    return unless defined $str;
+    return undef unless defined $str;
     $self->find_encoding( $encoding )->encode( $str );
 }
 
 
 sub decode {
     my ( $self, $encoding, $str ) = @_;
-    return unless defined $str;
+    return undef unless defined $str;
     $self->find_encoding( $encoding )->decode( $str );
 }
 

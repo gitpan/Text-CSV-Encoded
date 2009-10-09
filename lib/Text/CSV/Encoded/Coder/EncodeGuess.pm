@@ -10,11 +10,13 @@ use Carp ();
 use Encode ();
 use Encode::Guess;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 sub decode {
     my ( $self, $encoding, $str ) = @_;
+
+    return undef unless defined $str;
 
     if ( ref $encoding ) {
         my $enc = Encode::Guess::guess_encoding( $str, @$encoding );
